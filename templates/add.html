@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form action="/success" method="POST">
+	<input type='text' required name="user_id" placeholder="Enter User ID"/>
+	<input type='text' name="title" placeholder="Enter Title"/>
+	<input type='text' name="body" placeholder="Enter Post"/>
+	<input type="submit" value="Add"/>
+</form>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<!-- <form action="/info" method="POST">
+	<input type='text' name="id" placeholder="Enter ID" />
+	<input type="submit" value="Search"/>
+</form> -->
+{% for row in rows %}
+<div style="border:1px solid black; padding:10px">
+	<p> User ID: {{ row[0]}} <br>
+		Post ID: {{ row[1]}} <br>
+		Title: {{ row[2]}} <br><br>
+		{{ row[3]}} <br><br><br>
+	</p>
+</div>
+{% endfor %}
+{% endblock %}
