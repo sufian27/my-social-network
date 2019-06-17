@@ -31,8 +31,12 @@ def display_add():
 
 @app.route("/success", methods = ["POST"])
 def display_success():
-	c.execute("INSERT OR IGNORE INTO posts (user_id, title, body) VALUES (?, ?, ?)", 
-		(request.form.get("user_id"), request.form.get("title"), request.form.get("body"),))
+	if (request.environ["HTTP_REFERER"] == "http://127.0.0.1:5000/add"):
+		c.execute("INSERT OR IGNORE INTO posts (user_id, title, body) VALUES (?, ?, ?)", 
+			(request.form.get("user_id"), request.form.get("title"), request.form.get("body"),))
+	elif (request.environ["HTTP_REFERER"] == "http://127.0.0.1:5000/remove"): 
+		c.execute("DELETE FROM posts WHERE post_id = ?", (request.form.get("post_id"),))
+
 	conn.commit()
 	return render_template("success.html")
 
